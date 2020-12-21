@@ -9,7 +9,7 @@ const {registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blo
  * Every block starts by registering a new block type definition.
  * @see https://wordpress.org/gutenberg/handbook/block-api/
  */
-registerBlockType('gutenform/gutenform', {
+registerBlockType('mamd-block/form', {
     /**
      * This is the display title for your block, which can be translated with `i18n` functions.
      * The block inserter will show this name.
@@ -38,7 +38,7 @@ registerBlockType('gutenform/gutenform', {
      */
     edit: function (props) {
         return (
-            <p className={props.className}>__( 'Hello from the editor!' )</p>
+            <p className={props.className}>{__( 'Hello from the editor!' )}</p>
         );
     },
 
@@ -51,7 +51,7 @@ registerBlockType('gutenform/gutenform', {
      */
     save: function (props) {
         return (
-            <p>__( 'Hello from the editor!' )</p>
+            <p>{__( 'Hello from the frontend!' )}</p>
         );
     },
 });
