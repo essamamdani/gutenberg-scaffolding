@@ -29,7 +29,7 @@ module.exports = {
 			cacheGroups: {
 				editor: {
 					name: module => {
-						const list = module.identifier().split('/');
+						const list = module.identifier().split(path.sep);
 						list.pop();
                         return list.pop() + "/editor";
                     },
@@ -39,7 +39,7 @@ module.exports = {
 				},
 				style: {
 					name: module => {
-						const list = module.identifier().split('/');
+						const list = module.identifier().split(path.sep);
 						list.pop();
                         return list.pop() + "/style";
                     },
