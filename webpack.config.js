@@ -12,6 +12,11 @@ const blockJS = glob.sync("	./blocks/**/main.js").reduce((acc, item) => {
 	acc[name] = item;
 	return acc;
 }, {});
+const frontJS = glob.sync("	./blocks/**/front.js").reduce((acc, item) => {
+	const name = "./" + item.split("/").slice(2, -1) + "/front";
+	acc[name] = item;
+	return acc;
+}, {});
 
 const blockStyle = glob.sync("./blocks/**/style.scss").reduce((acc, item) => {
 	const name = "./" + item.split("/").slice(2, -1) + "/style";
@@ -27,7 +32,7 @@ const blockEditor = glob.sync("./blocks/**/editor.scss").reduce((acc, item) => {
 
 let process1 = {
 	...defaultConfig,
-	entry: Object.assign({}, blockJS, blockEditor, blockStyle),
+	entry: Object.assign({}, blockJS,frontJS, blockEditor, blockStyle),
 	optimization: {
 		...defaultConfig.optimization,
 		splitChunks: {
