@@ -9,18 +9,20 @@ const {registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blo
  * Every block starts by registering a new block type definition.
  * @see https://wordpress.org/gutenberg/handbook/block-api/
  */
-registerBlockType('mamd-block/form', {
+const blockSlug = 'section';
+const blockName = 'Section';
+registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockSlug}`, {
     /**
      * This is the display title for your block, which can be translated with `i18n` functions.
      * The block inserter will show this name.
      */
-    title: __('Gutenberg Form'),
+    title: __('Gutenberg ' + blockName),
 
     /**
      * Blocks are grouped into categories to help users browse and discover them.
      * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
      */
-    category: 'widgets',
+    category: 'widgets', //MAMD_PLUGIN_INFO.category_slug
     /**
      * Optional block extended support features.
      */

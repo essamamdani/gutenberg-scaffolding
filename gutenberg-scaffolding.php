@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Gutenberg Scaffolding
  * Plugin URI: https://www.mamdaniweb.com
@@ -9,11 +10,10 @@
  * License: GPL
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
+require_once('includes/constants.php');
+require_once('includes/app_class.php');
 
-foreach ( glob( plugin_dir_path( __FILE__ ) . 'blocks/{,*/,*/*/,*/*/*/}*.php', GLOB_BRACE ) as $file ) {
-	include_once $file;
-}
-
+new MAMD_App(__FILE__);
