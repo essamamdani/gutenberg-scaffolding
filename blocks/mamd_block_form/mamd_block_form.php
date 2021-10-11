@@ -30,7 +30,6 @@ class MAMD_Form {
 		wp_register_style(
 			'mamd-block-form-style',
 			plugins_url( '../../build/mamd_block_form/style.css', __FILE__ ),
-			array( 'wp-blocks' )
 		);
 
 		// Register our block's editor-specific CSS
@@ -38,7 +37,6 @@ class MAMD_Form {
 		wp_register_style(
 			'mamd-block-form-edit-style',
 			plugins_url( '../../build/mamd_block_form/editor.css', __FILE__ ),
-			array( 'wp-edit-blocks' )
 		);
 
 		// Enqueue the script in the editor
@@ -46,8 +44,8 @@ class MAMD_Form {
 			'mamd-block/form',
 			array(
 				'editor_script' => 'mamd-block-form',
-				'editor_style'  => 'mamd-block-form-style',
-				'style'         => 'mamd-block-form-edit-style',
+				'editor_style'  => 'mamd-block-form-edit-style',
+				'style'         => 'mamd-block-form-style',
 			)
 		);
 	}
