@@ -12,12 +12,12 @@ const blockJS = glob.sync("	./blocks/**/main.js").reduce((acc, item) => {
 	acc[name] = item;
 	return acc;
 }, {});
+
 const blockStyle = glob.sync("./blocks/**/style.scss").reduce((acc, item) => {
 	const name = "./" + item.split("/").slice(2, -1) + "/style";
 	acc[name] = item;
 	return acc;
 }, {});
-const mergeBlockStyle = { "bundle.min.css": glob.sync("./blocks/**/style.scss") };
 
 const blockEditor = glob.sync("./blocks/**/editor.scss").reduce((acc, item) => {
 	const name = "./" + item.split("/").slice(2, -1) + "/editor";
@@ -111,6 +111,9 @@ let process1 = {
 		new IgnoreEmitPlugin(['editor.js', 'style.js']),
 	],
 };
+
+const mergeBlockStyle = { "bundle.min.css": glob.sync("./blocks/**/style.scss") };
+const mergeFrontJS = {"bundle.js":glob.sync("./blocks/**/front.js")};
 let process2 = {
 	mode: 'production',
 
@@ -123,7 +126,7 @@ let process2 = {
 	// 	path.resolve(__dirname, 'src/index.js')
 	//   ]
 	// },
-	entry: { ...mergeBlockStyle },
+	entry: { ...mergeBlockStyle,...mergeFrontJS },
 	output: {
 		filename: '[name]',
 		path: path.resolve(__dirname, 'dist'),
