@@ -2,9 +2,22 @@
  * Registers a new block provided a unique name and an object defining its behavior.
  * @see https://github.com/WordPress/gutenberg/tree/master/blocks#api
  */
+
+import {BBPadding} from '../../components/padding';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { RichText, useBlockProps } = wp.blockEditor;
+const { InspectorControls,
+    BlockControls,
+    AlignmentToolbar,
+    BlockAlignmentToolbar,
+    
+    MediaUpload, MediaUploadCheck, InnerBlocks } = wp.editor;
+const { PanelBody, PanelRow,
+    TextControl, SelectControl, RangeControl, Dashicon, ToggleControl, ColorPalette, ColorIndicator,
+    Card, CardBody, Button, AlignmentMatrixControl, AnglePickerControl, ColorGradientControl, __experimentalGradientPicker, ColorPicker } = wp.components;
+
+
 /**
  * Every block starts by registering a new block type definition.
  * @see https://wordpress.org/gutenberg/handbook/block-api/
@@ -29,6 +42,10 @@ registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockSlug}`, {
             selector: 'h2',
             default: "Write Something"
         },
+        bb_section_padding:{
+            type:'string'
+
+        }
     },
 
     /**
@@ -58,7 +75,12 @@ registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockSlug}`, {
 
         return (
             <>
-                <input type="color" onChange={(e) => setAttributes({ backgroundColor: e.target.value })} />
+            <InspectorControls>
+                    <BBPadding setAttributes={setAttributes} attributePrefix="bb_section" name="Padding Chaiye" />
+
+                    {/* <BBPadding name="Padding Chaiye" /> */}
+</InspectorControls>
+<><p>{attributes.bb_section_padding}</p>
                 <RichText
                     {...blockProps}
                     tagName="h2" // The tag here is the element output and editable in the admin
@@ -66,7 +88,7 @@ registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockSlug}`, {
                     allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
                     onChange={(someText) => setAttributes({ someText })} // Store updated content as a block attribute
                     placeholder={__('Heading...')} // Display this text before any content has been added by the user
-                />
+                /></>
             </>
         );
     },

@@ -84,6 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_padding__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/padding */ "./components/padding.js");
 
 
 
@@ -91,6 +92,7 @@ __webpack_require__.r(__webpack_exports__);
  * Registers a new block provided a unique name and an object defining its behavior.
  * @see https://github.com/WordPress/gutenberg/tree/master/blocks#api
  */
+
 var __ = wp.i18n.__; // Import __() from wp.i18n
 
 var registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType() from wp.blocks
@@ -98,6 +100,32 @@ var registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType
 var _wp$blockEditor = wp.blockEditor,
     RichText = _wp$blockEditor.RichText,
     useBlockProps = _wp$blockEditor.useBlockProps;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    BlockAlignmentToolbar = _wp$editor.BlockAlignmentToolbar,
+    MediaUpload = _wp$editor.MediaUpload,
+    MediaUploadCheck = _wp$editor.MediaUploadCheck,
+    InnerBlocks = _wp$editor.InnerBlocks;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    Dashicon = _wp$components.Dashicon,
+    ToggleControl = _wp$components.ToggleControl,
+    ColorPalette = _wp$components.ColorPalette,
+    ColorIndicator = _wp$components.ColorIndicator,
+    Card = _wp$components.Card,
+    CardBody = _wp$components.CardBody,
+    Button = _wp$components.Button,
+    AlignmentMatrixControl = _wp$components.AlignmentMatrixControl,
+    AnglePickerControl = _wp$components.AnglePickerControl,
+    ColorGradientControl = _wp$components.ColorGradientControl,
+    __experimentalGradientPicker = _wp$components.__experimentalGradientPicker,
+    ColorPicker = _wp$components.ColorPicker;
 /**
  * Every block starts by registering a new block type definition.
  * @see https://wordpress.org/gutenberg/handbook/block-api/
@@ -121,6 +149,9 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
       source: 'html',
       selector: 'h2',
       default: "Write Something"
+    },
+    bb_section_padding: {
+      type: 'string'
     }
   },
 
@@ -153,14 +184,11 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
     var blockProps = useBlockProps({
       className: 'my-random-classname'
     });
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("input", {
-      type: "color",
-      onChange: function onChange(e) {
-        return setAttributes({
-          backgroundColor: e.target.value
-        });
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, blockProps, {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_padding__WEBPACK_IMPORTED_MODULE_2__["BBPadding"], {
+      setAttributes: setAttributes,
+      attributePrefix: "bb_section",
+      name: "Padding Chaiye"
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, attributes.bb_section_padding), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, blockProps, {
       tagName: "h2" // The tag here is the element output and editable in the admin
       ,
       value: attributes.someText // Any existing content, either from the database or an attribute default
@@ -175,7 +203,7 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
       ,
       placeholder: __('Heading...') // Display this text before any content has been added by the user
 
-    })));
+    }))));
   },
 
   /**
@@ -194,6 +222,90 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
     }));
   }
 });
+
+/***/ }),
+
+/***/ "./components/padding.js":
+/*!*******************************!*\
+  !*** ./components/padding.js ***!
+  \*******************************/
+/*! exports provided: BBPadding */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BBPadding", function() { return BBPadding; });
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var __ = wp.i18n.__; // Import __() from wp.i18n
+
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    BlockAlignmentToolbar = _wp$editor.BlockAlignmentToolbar,
+    RichText = _wp$editor.RichText,
+    MediaUpload = _wp$editor.MediaUpload,
+    MediaUploadCheck = _wp$editor.MediaUploadCheck,
+    InnerBlocks = _wp$editor.InnerBlocks;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    Dashicon = _wp$components.Dashicon,
+    ToggleControl = _wp$components.ToggleControl,
+    ColorPalette = _wp$components.ColorPalette,
+    ColorIndicator = _wp$components.ColorIndicator,
+    Card = _wp$components.Card,
+    CardBody = _wp$components.CardBody,
+    Button = _wp$components.Button,
+    AlignmentMatrixControl = _wp$components.AlignmentMatrixControl,
+    AnglePickerControl = _wp$components.AnglePickerControl,
+    ColorGradientControl = _wp$components.ColorGradientControl,
+    __experimentalGradientPicker = _wp$components.__experimentalGradientPicker,
+    ColorPicker = _wp$components.ColorPicker;
+var BBPadding = function BBPadding(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
+    title: __(props.name, 'blocks-bakery'),
+    initialOpen: true
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    onChange: function onChange(e) {
+      return props.setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, props.attributePrefix + "_padding", e));
+    }
+  }));
+};
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
 
 /***/ }),
 
