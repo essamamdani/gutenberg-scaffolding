@@ -1,1 +1,1 @@
-alert("yse");
+alert(MAMD_SECTION.backgrondColor);

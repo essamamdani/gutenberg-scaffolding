@@ -80,8 +80,11 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 /**
@@ -92,6 +95,9 @@ var __ = wp.i18n.__; // Import __() from wp.i18n
 
 var registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType() from wp.blocks
 
+var _wp$blockEditor = wp.blockEditor,
+    RichText = _wp$blockEditor.RichText,
+    useBlockProps = _wp$blockEditor.useBlockProps;
 /**
  * Every block starts by registering a new block type definition.
  * @see https://wordpress.org/gutenberg/handbook/block-api/
@@ -105,6 +111,18 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
    * The block inserter will show this name.
    */
   title: __('Gutenberg ' + blockName),
+  attributes: {
+    backgroundColor: {
+      default: "yellow",
+      type: "string"
+    },
+    someText: {
+      type: 'string',
+      source: 'html',
+      selector: 'h2',
+      default: "Write Something"
+    }
+  },
 
   /**
    * Blocks are grouped into categories to help users browse and discover them.
@@ -116,10 +134,10 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
   /**
    * Optional block extended support features.
    */
-  supports: {
-    // Removes support for an HTML mode.
-    html: false
-  },
+  // supports: {
+  //     // Removes support for an HTML mode.
+  //     html: false,
+  // },
 
   /**
    * The edit function describes the structure of your block in the context of the editor.
@@ -129,10 +147,35 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
    * @param {Object} [props] Properties passed from the editor.
    * @return {Element}       Element to render.
    */
-  edit: function edit(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-      className: props.className
-    }, __('Hello from the editor!'));
+  edit: function edit(_ref) {
+    var attributes = _ref.attributes,
+        setAttributes = _ref.setAttributes;
+    var blockProps = useBlockProps({
+      className: 'my-random-classname'
+    });
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("input", {
+      type: "color",
+      onChange: function onChange(e) {
+        return setAttributes({
+          backgroundColor: e.target.value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, blockProps, {
+      tagName: "h2" // The tag here is the element output and editable in the admin
+      ,
+      value: attributes.someText // Any existing content, either from the database or an attribute default
+      ,
+      allowedFormats: ['core/bold', 'core/italic'] // Allow the content to be made bold or italic, but do not allow other formatting options
+      ,
+      onChange: function onChange(someText) {
+        return setAttributes({
+          someText: someText
+        });
+      } // Store updated content as a block attribute
+      ,
+      placeholder: __('Heading...') // Display this text before any content has been added by the user
+
+    })));
   },
 
   /**
@@ -142,10 +185,44 @@ registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockSlug), {
    *
    * @return {Element}       Element to render.
    */
-  save: function save(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('Hello from the frontend!'));
+  save: function save(_ref2) {
+    var attributes = _ref2.attributes;
+    var blockProps = useBlockProps.save();
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText.Content, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, blockProps, {
+      tagName: "h2",
+      value: attributes.someText
+    }));
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/extends.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/extends.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
 
 /***/ }),
 
