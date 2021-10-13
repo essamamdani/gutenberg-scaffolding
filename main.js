@@ -1,5 +1,5 @@
 import React, { useEffects } from 'react';
-import spacingPanel from './components/spacing/panel';
+import spacingPanel from './components/spacing';
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n; // Import __() from wp.i18n
@@ -7,13 +7,13 @@ const {
     BlockControls,
     AlignmentToolbar,
     BlockAlignmentToolbar,
-
     MediaUpload, MediaUploadCheck, InnerBlocks } = wp.editor;
+    
 const MAMD_PLUGIN_INFO = {
-    name: 'MAMD',
+    name: 'BB',
     slug: 'blocks-bakery',
     prefix: 'bb',
-    category_slug: 'mamd_category',
+    category_slug: 'bb_category',
 
 }
 let editPanels = [];
@@ -52,3 +52,4 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
     });
 }
 
+const getAttribute = (attributes,prefix,itemName) => attributes[`${attributes.mainPrefix}_${prefix}_${itemName}`] 

@@ -3,8 +3,8 @@
  * @see https://github.com/WordPress/gutenberg/tree/master/blocks#api
  */
 
-import { BBPadding } from '../../components/spacing/panel';
-import { blockBakeryRegisterBlock } from '../../main';
+import { BBPadding } from '../../components/spacing';
+import { blockBakeryRegisterBlock, getAttribute } from '../../main';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { RichText, useBlockProps } = wp.blockEditor;
@@ -23,7 +23,6 @@ const { PanelBody, PanelRow,
  * Every block starts by registering a new block type definition.
  * @see https://wordpress.org/gutenberg/handbook/block-api/
  */
-const getAttribute = (attributes,prefix,itemName) => attributes[`${attributes.mainPrefix}_${prefix}_${itemName}`] 
 
 
 const blockSlug = 'section';
