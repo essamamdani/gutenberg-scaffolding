@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./blocks/section/style.scss"],"names":[],"mappings":"AAAA,MACE,MAAM","file":"section/style.css","sourcesContent":[".demo {\r\n  flex:1;\r\n}\r\n"],"sourceRoot":""}

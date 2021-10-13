@@ -120,17 +120,7 @@ let process1 = {
 const mergeBlockStyle = { "bundle.min.css": glob.sync("./blocks/**/style.scss") };
 const mergeFrontJS = {"bundle.js":glob.sync("./blocks/**/front.js")};
 let process2 = {
-	mode: 'production',
-
-	// entry: {
-	//   'bundle.min.css': [
-	// 	path.resolve(__dirname, 'src/css/main.css'),
-	// 	path.resolve(__dirname, 'src/css/local.css')
-	//   ],
-	//   'bundle.js': [
-	// 	path.resolve(__dirname, 'src/index.js')
-	//   ]
-	// },
+	mode: 'development',
 	entry: { ...mergeBlockStyle,...mergeFrontJS },
 	output: {
 		filename: '[name]',
@@ -149,7 +139,32 @@ let process2 = {
 	},
 	plugins: [
 		new ExtractTextPlugin("bundle.min.css"),
-		new IgnoreEmitPlugin(['bundle.min.css.js', 'styles.js']),
+		new IgnoreEmitPlugin(['bundle.min.css.js', 'styles.js','bundle.editor.css.js']),
 	]
 };
-module.exports = [process1, process2]
+const editorMainStyle = {"bundle.editor.css":["./main.scss"]};
+
+let process3 = {
+	mode: 'development',
+	entry: { ...editorMainStyle },
+	output: {
+		filename: '[name]',
+		path: path.resolve(__dirname, 'dist'),
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(sc|sa|c)ss$/,
+				exclude: /node_modules/,
+				use: ExtractTextPlugin.extract({
+					use: ['css-loader', 'sass-loader'],
+				}),
+			},
+		],
+	},
+	plugins: [
+		new ExtractTextPlugin("bundle.editor.css"),
+		new IgnoreEmitPlugin(['bundle.min.css.js', 'styles.js','bundle.editor.css.js']),
+	]
+};
+module.exports = [process1, process2,process3];

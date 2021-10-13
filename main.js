@@ -1,5 +1,6 @@
 import React, { useEffects } from 'react';
 import spacingPanel from './components/spacing';
+import backgroundPanel from './components/background';
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n; // Import __() from wp.i18n
@@ -8,7 +9,7 @@ const {
     AlignmentToolbar,
     BlockAlignmentToolbar,
     MediaUpload, MediaUploadCheck, InnerBlocks } = wp.editor;
-    
+
 const MAMD_PLUGIN_INFO = {
     name: 'BB',
     slug: 'blocks-bakery',
@@ -28,11 +29,18 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
     if (options.modules) {
         if (options.modules.spacing.length > 0) {
             options.modules.spacing.map(({ name, prefix }) => {
-                let { updateAttributes, content } = spacingPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
-                attributes = updateAttributes;
-                editPanels.push(content);
+                let spacingPanelObj = spacingPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+                attributes = spacingPanelObj.attrs;
+                editPanels.push(spacingPanelObj.content);
             })
         }
+        // if (options.modules.background) {
+        //     console.log(options.modules.background);    
+        //     let { name, prefix } = options.modules.background;
+        //     let backgroundPanelObject = backgroundPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+        //     attributes = backgroundPanelObject.attrs;
+        //     editPanels.push(backgroundPanelObject.content);
+        // }
     }
 
     return registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockName}`, {
@@ -42,7 +50,7 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
         edit: (props) => {
             return <>
                 <InspectorControls>
-                    {editPanels.map(a => a(props.setAttributes))}
+                    {editPanels.map(a => a(props))}
                 </InspectorControls>
                 {options.edit(props)}
             </>
@@ -52,4 +60,4 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
     });
 }
 
-const getAttribute = (attributes,prefix,itemName) => attributes[`${attributes.mainPrefix}_${prefix}_${itemName}`] 
+export const getAttribute = (attributes, prefix, itemName) => attributes[`${attributes.mainPrefix}_${prefix}_${itemName}`]

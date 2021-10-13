@@ -33,7 +33,7 @@ blockBakeryRegisterBlock(blockSlug, {
      * The block inserter will show this name.
      */
     title: __('Gutenberg ' + blockName),
-    
+
     modules: {
         spacing: [{
             name: "Padding",
@@ -43,9 +43,9 @@ blockBakeryRegisterBlock(blockSlug, {
             name: "Margin",
             prefix: "child_margin"
         }],
-        background:{
-            name:"Background Parent",
-            prefix:"bg_abc_parent"
+        background: {
+            name: "Background Parent",
+            prefix: "bg_abc_parent"
         }
     },
 
@@ -90,11 +90,14 @@ blockBakeryRegisterBlock(blockSlug, {
         return (
             <>
                 <InspectorControls>
-                    <input type="text" value={attributes.bb_section_padding} />
+                    <PanelBody title={__('Some Text Here')}>
+                        <TextControl placeholder="Some Dummy" type="number" value={attributes.bb_section_padding} />
+
+                    </PanelBody>
                 </InspectorControls>
                 <>
-                <h1>Padding Attribute Update</h1>
-                <p>{getAttribute(attributes,'child_margin','top')}</p>
+                    <h1>Padding Attribute Update</h1>
+                    <p>{getAttribute(attributes, 'padding', 'top')}</p>
                     <p>Top {attributes[`${attributes.mainPrefix}_padding_top`]}px</p>
                     <p>Right {attributes[`${attributes.mainPrefix}_padding_right`]}px</p>
                     <p>bottom {attributes[`${attributes.mainPrefix}_padding_bottom`]}px</p>
