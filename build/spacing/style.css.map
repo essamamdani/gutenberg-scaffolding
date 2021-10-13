@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./components/spacing/style.scss"],"names":[],"mappings":"AAAA,8BACI,UAAU","file":"spacing/style.css","sourcesContent":[".components-panel__body-title {\r\n    color:aqua;\r\n}"],"sourceRoot":""}

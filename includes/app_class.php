@@ -20,6 +20,14 @@ if (!class_exists('MAMD_App')) {
             if (get_option(MAMD_PLUGIN_SLUG . "_bundle_css")) {
                 add_action('wp_head', array($this, 'generate_bundle_css'), 5, 0);
             }
+
+            add_action('wp_ajax_bb_get_thumbnails',array($this,'get_thumbnails'));
+        }
+
+        function get_thumbnails(){
+            global $_wp_additional_image_sizes; 
+
+            wp_send_json(array_merge(wp_get_registered_image_subsizes(),array("full"=>[],"custom"=>""))); 
         }
 
         public function generate_bundle_css()

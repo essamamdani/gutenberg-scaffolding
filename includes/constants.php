@@ -1,3 +1,3 @@
 <?php
 define('MAMD_PLUGIN_NAME', 'MAMD');
-define('MAMD_PLUGIN_SLUG', 'mamd');
+define('MAMD_PLUGIN_SLUG', 'blocks-bakery');

@@ -3,7 +3,8 @@
  * @see https://github.com/WordPress/gutenberg/tree/master/blocks#api
  */
 
-import {BBPadding} from '../../components/padding';
+import { BBPadding } from '../../components/spacing/panel';
+import { blockBakeryRegisterBlock } from '../../main';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { RichText, useBlockProps } = wp.blockEditor;
@@ -11,7 +12,7 @@ const { InspectorControls,
     BlockControls,
     AlignmentToolbar,
     BlockAlignmentToolbar,
-    
+
     MediaUpload, MediaUploadCheck, InnerBlocks } = wp.editor;
 const { PanelBody, PanelRow,
     TextControl, SelectControl, RangeControl, Dashicon, ToggleControl, ColorPalette, ColorIndicator,
@@ -22,14 +23,32 @@ const { PanelBody, PanelRow,
  * Every block starts by registering a new block type definition.
  * @see https://wordpress.org/gutenberg/handbook/block-api/
  */
+const getAttribute = (attributes,prefix,itemName) => attributes[`${attributes.mainPrefix}_${prefix}_${itemName}`] 
+
+
 const blockSlug = 'section';
 const blockName = 'Section';
-registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockSlug}`, {
+blockBakeryRegisterBlock(blockSlug, {
     /**
      * This is the display title for your block, which can be translated with `i18n` functions.
      * The block inserter will show this name.
      */
     title: __('Gutenberg ' + blockName),
+    
+    modules: {
+        spacing: [{
+            name: "Padding",
+            prefix: "padding"
+        },
+        {
+            name: "Margin",
+            prefix: "child_margin"
+        }],
+        background:{
+            name:"Background Parent",
+            prefix:"bg_abc_parent"
+        }
+    },
 
     attributes: {
         backgroundColor: {
@@ -42,10 +61,7 @@ registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockSlug}`, {
             selector: 'h2',
             default: "Write Something"
         },
-        bb_section_padding:{
-            type:'string'
 
-        }
     },
 
     /**
@@ -72,23 +88,26 @@ registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockSlug}`, {
         const blockProps = useBlockProps({
             className: 'my-random-classname',
         });
-
         return (
             <>
-            <InspectorControls>
-                    <BBPadding setAttributes={setAttributes} attributePrefix="bb_section" name="Padding Chaiye" />
-
-                    {/* <BBPadding name="Padding Chaiye" /> */}
-</InspectorControls>
-<><p>{attributes.bb_section_padding}</p>
-                <RichText
-                    {...blockProps}
-                    tagName="h2" // The tag here is the element output and editable in the admin
-                    value={attributes.someText} // Any existing content, either from the database or an attribute default
-                    allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
-                    onChange={(someText) => setAttributes({ someText })} // Store updated content as a block attribute
-                    placeholder={__('Heading...')} // Display this text before any content has been added by the user
-                /></>
+                <InspectorControls>
+                    <input type="text" value={attributes.bb_section_padding} />
+                </InspectorControls>
+                <>
+                <h1>Padding Attribute Update</h1>
+                <p>{getAttribute(attributes,'child_margin','top')}</p>
+                    <p>Top {attributes[`${attributes.mainPrefix}_padding_top`]}px</p>
+                    <p>Right {attributes[`${attributes.mainPrefix}_padding_right`]}px</p>
+                    <p>bottom {attributes[`${attributes.mainPrefix}_padding_bottom`]}px</p>
+                    <p>left {attributes[`${attributes.mainPrefix}_padding_left`]}px</p>
+                    <RichText
+                        {...blockProps}
+                        tagName="h2" // The tag here is the element output and editable in the admin
+                        value={attributes.someText} // Any existing content, either from the database or an attribute default
+                        allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
+                        onChange={(someText) => setAttributes({ someText })} // Store updated content as a block attribute
+                        placeholder={__('Heading...')} // Display this text before any content has been added by the user
+                    /></>
             </>
         );
     },
