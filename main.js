@@ -1,5 +1,6 @@
 import React, { useEffects } from 'react';
 import spacingPanel from './components/spacing';
+import borderPanel from './components/border';
 import backgroundPanel from './components/background';
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
@@ -28,19 +29,20 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
     };
     if (options.modules) {
         if (options.modules.spacing.length > 0) {
-            options.modules.spacing.map(({ name, prefix }) => {
-                let spacingPanelObj = spacingPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+            options.modules.spacing.map(({ name, prefix, defaults }) => {
+                let spacingPanelObj = spacingPanel({ name,defaults, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
                 attributes = spacingPanelObj.attrs;
                 editPanels.push(spacingPanelObj.content);
             })
         }
-        // if (options.modules.background) {
-        //     console.log(options.modules.background);    
-        //     let { name, prefix } = options.modules.background;
-        //     let backgroundPanelObject = backgroundPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
-        //     attributes = backgroundPanelObject.attrs;
-        //     editPanels.push(backgroundPanelObject.content);
-        // }
+        
+        if (options.modules.border) {
+           
+            let { name, prefix ,defaults} = options.modules.border;
+            let borderPanelObject = borderPanel({ name, defaults, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+            attributes = borderPanelObject.attrs;
+            editPanels.push(borderPanelObject.content);
+        }
     }
 
     return registerBlockType(`${MAMD_PLUGIN_INFO.slug}/${blockName}`, {

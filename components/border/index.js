@@ -27,14 +27,39 @@ const { PanelBody, PanelRow,
                 right: '10%',
                 bottom: '50px',
             }
+        },
+        [`${props.border_style_prefix}`]:{
+            type:'string',
+            default: props.border_style_defaults || 'none',
         }
+
     };
 
     let content = ({attributes, setAttributes}) => <PanelBody title={__(props.name, 'blocks-bakery')} initialOpen={true}>
+        <SelectControl
+                            label="Border Style"
+                            options={[
+                                { label: 'None', value: 'none' },
+                                { label: 'Solid', value: 'solid' },
+                                { label: 'Dotted', value: 'dotted' },
+                                { label: 'Dashed', value: 'dashed' },
+                                { label: 'Double', value: 'double' },
+                                { label: 'Inset', value: 'inset' },
+
+                            ]}
+                            values={ attributes[`${props.border_style_prefix}`] }
+                            onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_all`]:nextValues} ) }
+                        />
         <BoxControl
 			values={ attributes[`${props.prefix}_all`] }
 			onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_all`]:nextValues} ) }
 		/>
+
+<BoxControl
+			values={ attributes[`${props.prefix}_b_all`] }
+			onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_all`]:nextValues} ) }
+		/>
+        
     </PanelBody>;
     return { attrs, content }
 }

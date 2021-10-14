@@ -144,14 +144,41 @@ Object(_main__WEBPACK_IMPORTED_MODULE_3__["blockBakeryRegisterBlock"])(blockSlug
   modules: {
     spacing: [{
       name: "Padding",
-      prefix: "padding"
+      prefix: "padding",
+      defaults: {
+        top: '24px',
+        left: '45%',
+        right: '10%',
+        bottom: '50px'
+      }
     }, {
       name: "Margin",
-      prefix: "child_margin"
+      prefix: "child_margin",
+      defaults: {
+        top: '23px',
+        left: '10%',
+        right: '10%',
+        bottom: '50px'
+      }
     }],
     background: {
       name: "Background Parent",
       prefix: "bg_abc_parent"
+    },
+    border: {
+      name: "Border",
+      prefix: "border",
+      defaults: {
+        top: '23px',
+        left: '10%',
+        right: '10%',
+        bottom: '50px'
+      }
+    },
+    border_style: {
+      name: "Border Style",
+      prefix: "border_style",
+      defaults: 'none'
     }
   },
   attributes: {
@@ -337,6 +364,126 @@ var __ = wp.i18n.__; // Import __() from wp.i18n
 
 /***/ }),
 
+/***/ "./components/border/index.js":
+/*!************************************!*\
+  !*** ./components/border/index.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+// import "./style.scss";
+var __ = wp.i18n.__; // Import __() from wp.i18n
+
+var __experimentalBoxControl = wp.components.__experimentalBoxControl;
+var BoxControl = __experimentalBoxControl;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    BlockAlignmentToolbar = _wp$editor.BlockAlignmentToolbar,
+    RichText = _wp$editor.RichText,
+    MediaUpload = _wp$editor.MediaUpload,
+    MediaUploadCheck = _wp$editor.MediaUploadCheck,
+    InnerBlocks = _wp$editor.InnerBlocks;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    Dashicon = _wp$components.Dashicon,
+    ToggleControl = _wp$components.ToggleControl,
+    ColorPalette = _wp$components.ColorPalette,
+    ColorIndicator = _wp$components.ColorIndicator,
+    Card = _wp$components.Card,
+    CardBody = _wp$components.CardBody,
+    Button = _wp$components.Button,
+    AlignmentMatrixControl = _wp$components.AlignmentMatrixControl,
+    AnglePickerControl = _wp$components.AnglePickerControl,
+    ColorGradientControl = _wp$components.ColorGradientControl,
+    __experimentalGradientPicker = _wp$components.__experimentalGradientPicker,
+    ColorPicker = _wp$components.ColorPicker;
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  var _objectSpread2;
+
+  var attrs = _objectSpread(_objectSpread({}, props.attributes), {}, (_objectSpread2 = {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.prefix, "_all"), {
+    type: 'array',
+    default: props.defaults || {
+      top: '50px',
+      left: '10%',
+      right: '10%',
+      bottom: '50px'
+    }
+  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.border_style_prefix), {
+    type: 'string',
+    default: props.border_style_defaults || 'none'
+  }), _objectSpread2));
+
+  var content = function content(_ref) {
+    var attributes = _ref.attributes,
+        setAttributes = _ref.setAttributes;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
+      title: __(props.name, 'blocks-bakery'),
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(SelectControl, {
+      label: "Border Style",
+      options: [{
+        label: 'None',
+        value: 'none'
+      }, {
+        label: 'Solid',
+        value: 'solid'
+      }, {
+        label: 'Dotted',
+        value: 'dotted'
+      }, {
+        label: 'Dashed',
+        value: 'dashed'
+      }, {
+        label: 'Double',
+        value: 'double'
+      }, {
+        label: 'Inset',
+        value: 'inset'
+      }],
+      values: attributes["".concat(props.border_style_prefix)],
+      onChange: function onChange(nextValues) {
+        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), nextValues));
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BoxControl, {
+      values: attributes["".concat(props.prefix, "_all")],
+      onChange: function onChange(nextValues) {
+        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), nextValues));
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BoxControl, {
+      values: attributes["".concat(props.prefix, "_b_all")],
+      onChange: function onChange(nextValues) {
+        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), nextValues));
+      }
+    }));
+  };
+
+  return {
+    attrs: attrs,
+    content: content
+  };
+});
+
+/***/ }),
+
 /***/ "./components/spacing/index.js":
 /*!*************************************!*\
   !*** ./components/spacing/index.js ***!
@@ -390,29 +537,15 @@ var _wp$components = wp.components,
     __experimentalGradientPicker = _wp$components.__experimentalGradientPicker,
     ColorPicker = _wp$components.ColorPicker;
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  var _objectSpread2;
-
-  var attrs = _objectSpread(_objectSpread({}, props.attributes), {}, (_objectSpread2 = {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.prefix, "_top"), {
-    type: 'number',
-    default: 10
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.prefix, "_bottom"), {
-    type: 'number',
-    default: 10
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.prefix, "_left"), {
-    type: 'number',
-    default: 10
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.prefix, "_right"), {
-    type: 'number',
-    default: 10
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.prefix, "_all"), {
+  var attrs = _objectSpread(_objectSpread({}, props.attributes), {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), {
     type: 'array',
-    default: {
+    default: props.defaults || {
       top: '50px',
       left: '10%',
       right: '10%',
       bottom: '50px'
     }
-  }), _objectSpread2));
+  }));
 
   var content = function content(_ref) {
     var attributes = _ref.attributes,
@@ -420,27 +553,7 @@ var _wp$components = wp.components,
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
       title: __(props.name, 'blocks-bakery'),
       initialOpen: true
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-      defaultValue: attributes["".concat(props.prefix, "_top")],
-      onChange: function onChange(e) {
-        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_top"), Number(e)));
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-      value: attributes["".concat(props.prefix, "_bottom")],
-      onChange: function onChange(e) {
-        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_bottom"), Number(e)));
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-      value: attributes["".concat(props.prefix, "_left")],
-      onChange: function onChange(e) {
-        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_left"), Number(e)));
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-      value: attributes["".concat(props.prefix, "_right")],
-      onChange: function onChange(e) {
-        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_right"), Number(e)));
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BoxControl, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BoxControl, {
       values: attributes["".concat(props.prefix, "_all")],
       onChange: function onChange(nextValues) {
         return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), nextValues));
@@ -474,13 +587,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_spacing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/spacing */ "./components/spacing/index.js");
-/* harmony import */ var _components_background__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/background */ "./components/background/index.js");
+/* harmony import */ var _components_border__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/border */ "./components/border/index.js");
+/* harmony import */ var _components_background__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/background */ "./components/background/index.js");
 
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -517,23 +632,33 @@ var blockBakeryRegisterBlock = function blockBakeryRegisterBlock(blockName, opti
     if (options.modules.spacing.length > 0) {
       options.modules.spacing.map(function (_ref) {
         var name = _ref.name,
-            prefix = _ref.prefix;
+            prefix = _ref.prefix,
+            defaults = _ref.defaults;
         var spacingPanelObj = Object(_components_spacing__WEBPACK_IMPORTED_MODULE_3__["default"])({
           name: name,
+          defaults: defaults,
           prefix: "".concat(MAMD_PLUGIN_INFO.prefix, "_").concat(blockName).concat(prefix ? "_".concat(prefix) : ''),
           attributes: attributes
         });
         attributes = spacingPanelObj.attrs;
         editPanels.push(spacingPanelObj.content);
       });
-    } // if (options.modules.background) {
-    //     console.log(options.modules.background);    
-    //     let { name, prefix } = options.modules.background;
-    //     let backgroundPanelObject = backgroundPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
-    //     attributes = backgroundPanelObject.attrs;
-    //     editPanels.push(backgroundPanelObject.content);
-    // }
+    }
 
+    if (options.modules.border) {
+      var _options$modules$bord = options.modules.border,
+          name = _options$modules$bord.name,
+          prefix = _options$modules$bord.prefix,
+          defaults = _options$modules$bord.defaults;
+      var borderPanelObject = Object(_components_border__WEBPACK_IMPORTED_MODULE_4__["default"])({
+        name: name,
+        defaults: defaults,
+        prefix: "".concat(MAMD_PLUGIN_INFO.prefix, "_").concat(blockName).concat(prefix ? "_".concat(prefix) : ''),
+        attributes: attributes
+      });
+      attributes = borderPanelObject.attrs;
+      editPanels.push(borderPanelObject.content);
+    }
   }
 
   return registerBlockType("".concat(MAMD_PLUGIN_INFO.slug, "/").concat(blockName), _objectSpread(_objectSpread({}, options), {}, {

@@ -37,16 +37,44 @@ blockBakeryRegisterBlock(blockSlug, {
     modules: {
         spacing: [{
             name: "Padding",
-            prefix: "padding"
+            prefix: "padding",
+            defaults:{
+                top: '24px',
+                left: '45%',
+                right: '10%',
+                bottom: '50px',
+            },
         },
         {
             name: "Margin",
-            prefix: "child_margin"
+            prefix: "child_margin",
+            defaults:{
+                top: '23px',
+                left: '10%',
+                right: '10%',
+                bottom: '50px',
+            },
         }],
         background: {
             name: "Background Parent",
             prefix: "bg_abc_parent"
+        },
+        border:{
+            name: "Border",
+            prefix: "border",
+            defaults:{
+                top: '23px',
+                left: '10%',
+                right: '10%',
+                bottom: '50px',
+            },
+        },
+        border_style :{
+            name: "Border Style",
+            prefix: "border_style",
+            defaults:'none',
         }
+    
     },
 
     attributes: {
@@ -92,7 +120,6 @@ blockBakeryRegisterBlock(blockSlug, {
                 <InspectorControls>
                     <PanelBody title={__('Some Text Here')}>
                         <TextControl placeholder="Some Dummy" type="number" value={attributes.bb_section_padding} />
-
                     </PanelBody>
                 </InspectorControls>
                 <>
