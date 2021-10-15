@@ -175,6 +175,16 @@ Object(_main__WEBPACK_IMPORTED_MODULE_3__["blockBakeryRegisterBlock"])(blockSlug
         bottom: '50px'
       }
     },
+    border_radius: {
+      name: "Border Radius",
+      prefix: "border_radius",
+      defaults: {
+        top: '111px',
+        left: '110%',
+        right: '10%',
+        bottom: '50px'
+      }
+    },
     border_style: {
       name: "Border Style",
       prefix: "border_style",
@@ -369,118 +379,9 @@ var __ = wp.i18n.__; // Import __() from wp.i18n
   !*** ./components/border/index.js ***!
   \************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-// import "./style.scss";
-var __ = wp.i18n.__; // Import __() from wp.i18n
-
-var __experimentalBoxControl = wp.components.__experimentalBoxControl;
-var BoxControl = __experimentalBoxControl;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    BlockControls = _wp$editor.BlockControls,
-    AlignmentToolbar = _wp$editor.AlignmentToolbar,
-    BlockAlignmentToolbar = _wp$editor.BlockAlignmentToolbar,
-    RichText = _wp$editor.RichText,
-    MediaUpload = _wp$editor.MediaUpload,
-    MediaUploadCheck = _wp$editor.MediaUploadCheck,
-    InnerBlocks = _wp$editor.InnerBlocks;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
-    TextControl = _wp$components.TextControl,
-    SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
-    Dashicon = _wp$components.Dashicon,
-    ToggleControl = _wp$components.ToggleControl,
-    ColorPalette = _wp$components.ColorPalette,
-    ColorIndicator = _wp$components.ColorIndicator,
-    Card = _wp$components.Card,
-    CardBody = _wp$components.CardBody,
-    Button = _wp$components.Button,
-    AlignmentMatrixControl = _wp$components.AlignmentMatrixControl,
-    AnglePickerControl = _wp$components.AnglePickerControl,
-    ColorGradientControl = _wp$components.ColorGradientControl,
-    __experimentalGradientPicker = _wp$components.__experimentalGradientPicker,
-    ColorPicker = _wp$components.ColorPicker;
-/* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  var _objectSpread2;
-
-  var attrs = _objectSpread(_objectSpread({}, props.attributes), {}, (_objectSpread2 = {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.prefix, "_all"), {
-    type: 'array',
-    default: props.defaults || {
-      top: '50px',
-      left: '10%',
-      right: '10%',
-      bottom: '50px'
-    }
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "".concat(props.border_style_prefix), {
-    type: 'string',
-    default: props.border_style_defaults || 'none'
-  }), _objectSpread2));
-
-  var content = function content(_ref) {
-    var attributes = _ref.attributes,
-        setAttributes = _ref.setAttributes;
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
-      title: __(props.name, 'blocks-bakery'),
-      initialOpen: true
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(SelectControl, {
-      label: "Border Style",
-      options: [{
-        label: 'None',
-        value: 'none'
-      }, {
-        label: 'Solid',
-        value: 'solid'
-      }, {
-        label: 'Dotted',
-        value: 'dotted'
-      }, {
-        label: 'Dashed',
-        value: 'dashed'
-      }, {
-        label: 'Double',
-        value: 'double'
-      }, {
-        label: 'Inset',
-        value: 'inset'
-      }],
-      values: attributes["".concat(props.border_style_prefix)],
-      onChange: function onChange(nextValues) {
-        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), nextValues));
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BoxControl, {
-      values: attributes["".concat(props.prefix, "_all")],
-      onChange: function onChange(nextValues) {
-        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), nextValues));
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BoxControl, {
-      values: attributes["".concat(props.prefix, "_b_all")],
-      onChange: function onChange(nextValues) {
-        return setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, "".concat(props.prefix, "_all"), nextValues));
-      }
-    }));
-  };
-
-  return {
-    attrs: attrs,
-    content: content
-  };
-});
+throw new Error("Module build failed: SyntaxError: C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\components\\border\\index.js: Unexpected token, expected \",\" (24:55)\n\n\u001b[0m \u001b[90m 22 | \u001b[39m    let attrs \u001b[33m=\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m        \u001b[33m...\u001b[39mprops\u001b[33m.\u001b[39mattributes\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m        \u001b[33m...\u001b[39mmakeResponsive([\u001b[32m`${props.prefix}_all_hover`\u001b[39m]\u001b[33m:\u001b[39m{\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 | \u001b[39m            type\u001b[33m:\u001b[39m\u001b[32m'array'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 | \u001b[39m            \u001b[36mdefault\u001b[39m\u001b[33m:\u001b[39m props\u001b[33m.\u001b[39mdefaults \u001b[33m||\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 27 | \u001b[39m                top\u001b[33m:\u001b[39m \u001b[32m'50px'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Object._raise (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:748:17)\n    at Object.raiseWithData (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:741:17)\n    at Object.raise (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Object.unexpected (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9101:16)\n    at Object.expect (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9087:28)\n    at Object.parseCallExpressionArguments (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10334:14)\n    at Object.parseCoverCallAndAsyncArrowHead (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10258:29)\n    at Object.parseSubscript (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10194:19)\n    at Object.parseSubscripts (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10167:19)\n    at Object.parseExprSubscripts (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10156:17)\n    at Object.parseUpdate (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Object.parseMaybeUnary (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Object.parseExprOps (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)\n    at Object.parseMaybeConditional (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9963:23)\n    at Object.parseMaybeAssign (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9926:21)\n    at C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9893:39\n    at Object.allowInAnd (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:11547:12)\n    at Object.parseMaybeAssignAllowIn (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9893:17)\n    at Object.parseSpread (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9470:26)\n    at Object.parsePropertyDefinition (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10996:19)\n    at Object.parseObjectLike (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10931:25)\n    at Object.parseExprAtom (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10491:23)\n    at Object.parseExprAtom (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:4763:20)\n    at Object.parseExprSubscripts (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)\n    at Object.parseUpdate (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Object.parseMaybeUnary (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Object.parseExprOps (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)\n    at Object.parseMaybeConditional (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9963:23)\n    at Object.parseMaybeAssign (C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9926:21)\n    at C:\\xampp\\htdocs\\zagop\\wp-content\\plugins\\gutenberg-scaffolding\\node_modules\\@babel\\parser\\lib\\index.js:9893:39");
 
 /***/ }),
 
@@ -573,13 +474,14 @@ var _wp$components = wp.components,
 /*!*****************!*\
   !*** ./main.js ***!
   \*****************/
-/*! exports provided: blockBakeryRegisterBlock, getAttribute */
+/*! exports provided: blockBakeryRegisterBlock, getAttribute, makeResponsive */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blockBakeryRegisterBlock", function() { return blockBakeryRegisterBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAttribute", function() { return getAttribute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeResponsive", function() { return makeResponsive; });
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -654,7 +556,8 @@ var blockBakeryRegisterBlock = function blockBakeryRegisterBlock(blockName, opti
         name: name,
         defaults: defaults,
         prefix: "".concat(MAMD_PLUGIN_INFO.prefix, "_").concat(blockName).concat(prefix ? "_".concat(prefix) : ''),
-        attributes: attributes
+        attributes: attributes,
+        options: options
       });
       attributes = borderPanelObject.attrs;
       editPanels.push(borderPanelObject.content);
@@ -677,6 +580,7 @@ var blockBakeryRegisterBlock = function blockBakeryRegisterBlock(blockName, opti
 var getAttribute = function getAttribute(attributes, prefix, itemName) {
   return attributes["".concat(attributes.mainPrefix, "_").concat(prefix, "_").concat(itemName)];
 };
+var makeResponsive = function makeResponsive() {};
 
 /***/ }),
 

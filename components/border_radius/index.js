@@ -1,5 +1,5 @@
 // import "./style.scss";
-import {makeResponsive} from ''
+
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { __experimentalBoxControl } = wp.components;
@@ -15,43 +15,39 @@ const { PanelBody, PanelRow,
     TextControl, SelectControl, RangeControl, Dashicon, ToggleControl, ColorPalette, ColorIndicator,
     Card, CardBody, Button, AlignmentMatrixControl, AnglePickerControl, ColorGradientControl, __experimentalGradientPicker, ColorPicker } = wp.components;
 
-    let Radius = false;
-
     export default (props) => {
 
     let attrs = {
         ...props.attributes,
-        ...makeResponsive([`${props.prefix}_all_hover`]:{
+        [`${props.prefix}_all`]:{
             type:'array',
             default: props.defaults || {
-                top: '50px',
-                left: '10%',
-                right: '10%',
-                bottom: '50px',
+                top: 50,
+                left: 10,
+                right: 10,
+                bottom: 50,
             }
-        }),
-        [`${props.prefix}_style`]:{
+        },
+        [`${props.prefix}_all_unit`]:{
+            type:'array',
+            default: props.defaults || {
+                top: 'px',
+                left: '%',
+                right: '%',
+                bottom: 'px',
+            }
+        },
+        [`${props.prefix}_border_style`]:{
             type:'string',
             default: props.border_style_defaults || 'none',
         },
-        [`${props.prefix}_radius_all`]:{
-            type:'array',
-            default: props.defaults || {
-                top: '50px',
-                left: '10%',
-                right: '10%',
-                bottom: '50px',
-            }
-        },
     };
-
-
     
-    
-    let content = ({attributes, setAttributes}) => 
-    <PanelBody title={__(props.name, 'blocks-bakery')} initialOpen={true}>
 
-            <SelectControl
+    let content = ({attributes, setAttributes}) => <PanelBody title={__(props.name, 'blocks-bakery')} initialOpen={true}>
+        
+        
+        <SelectControl
                             label="Border Style"
                             options={[
                                 { label: 'None', value: 'none' },
@@ -62,22 +58,17 @@ const { PanelBody, PanelRow,
                                 { label: 'Inset', value: 'inset' },
 
                             ]}
-                            values={ attributes[`${props.prefix}_style`] }
-                            onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_style`]:nextValues} ) 
-                                (nextValues !='none'?Radius=true:Radius=false)
-                        }
-                               
+                            values={ attributes[`${props.prefix}_border_style`] }
+                            onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_border_style`]:nextValues} ) }
                         />
-        
-        <BoxControl label={'Border'}
+        <BoxControl
+            unit={ attributes[`${props.prefix}_all_unit`] }
 			values={ attributes[`${props.prefix}_all`] }
 			onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_all`]:nextValues} ) }
 		/>
 
-        {Radius ==true?<BoxControl label={'Border Radius'}
-			values={ attributes[`${props.prefix}_radius_all`] }
-			onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_radius_all`]:nextValues} ) }
-		/>:''}
+
+        
     </PanelBody>;
     return { attrs, content }
 }

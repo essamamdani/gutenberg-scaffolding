@@ -69,6 +69,16 @@ blockBakeryRegisterBlock(blockSlug, {
                 bottom: '50px',
             },
         },
+        border_radius:{
+            name: "Border Radius",
+            prefix: "border_radius",
+            defaults:{
+                top: '111px',
+                left: '110%',
+                right: '10%',
+                bottom: '50px',
+            },
+        },
         border_style :{
             name: "Border Style",
             prefix: "border_style",

@@ -37,9 +37,8 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
         }
         
         if (options.modules.border) {
-           
-            let { name, prefix ,defaults} = options.modules.border;
-            let borderPanelObject = borderPanel({ name, defaults, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+            let { name , prefix ,defaults} = options.modules.border;
+            let borderPanelObject = borderPanel({ name, defaults, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes , options });
             attributes = borderPanelObject.attrs;
             editPanels.push(borderPanelObject.content);
         }
@@ -60,6 +59,15 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
         save: (props) => options.save(props),
 
     });
+
+
 }
 
 export const getAttribute = (attributes, prefix, itemName) => attributes[`${attributes.mainPrefix}_${prefix}_${itemName}`]
+
+export const makeResponsive = () => {
+
+    
+    
+
+}
