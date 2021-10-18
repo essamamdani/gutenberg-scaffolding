@@ -44,11 +44,11 @@ export default (props) => {
         }
     };
     let content = ({attributes, setAttributes}) => <PanelBody title={__(props.name, 'blocks-bakery')} initialOpen={true}>
-        <TextControl defaultValue={attributes[`${props.prefix}_top`]} onChange={e => setAttributes({ [`${props.prefix}_top`]: Number(e) })} />
+        {/* <TextControl defaultValue={attributes[`${props.prefix}_top`]} onChange={e => setAttributes({ [`${props.prefix}_top`]: Number(e) })} />
         <TextControl value={attributes[`${props.prefix}_bottom`]} onChange={e => setAttributes({ [`${props.prefix}_bottom`]: Number(e) })} />
 
         <TextControl value={attributes[`${props.prefix}_left`]} onChange={e => setAttributes({ [`${props.prefix}_left`]: Number(e) })} />
-        <TextControl value={attributes[`${props.prefix}_right`]} onChange={e => setAttributes({ [`${props.prefix}_right`]: Number(e) })} />
+        <TextControl value={attributes[`${props.prefix}_right`]} onChange={e => setAttributes({ [`${props.prefix}_right`]: Number(e) })} /> */}
         <BoxControl
 			values={ attributes[`${props.prefix}_all`] }
 			onChange={ ( nextValues ) => setAttributes( {[`${props.prefix}_all`]:nextValues} ) }

@@ -1,6 +1,9 @@
 import React, { useEffects } from 'react';
 import spacingPanel from './components/spacing';
+
 import backgroundPanel from './components/background';
+import backgroundOverlayPanel from './components/background_overlay';
+import typographyPanel from './components/typography';
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n; // Import __() from wp.i18n
@@ -33,6 +36,21 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
                 attributes = spacingPanelObj.attrs;
                 editPanels.push(spacingPanelObj.content);
             })
+        }
+        if (options.modules.typography) {
+            console.log(options.modules.typography);    
+            let { name, prefix } = options.modules.typography;
+            let typographyPanelObject = typographyPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+            attributes = typographyPanelObject.attrs;
+            editPanels.push(typographyPanelObject.content);
+        }
+
+        if (options.modules.backgroundOverlay) {
+            console.log(options.modules.backgroundOverlay);    
+            let { name, prefix } = options.modules.backgroundOverlay;
+            let backgroundOverlayPanelObject = backgroundOverlayPanel({ name, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+            attributes = backgroundOverlayPanelObject.attrs;
+            editPanels.push(backgroundOverlayPanelObject.content);
         }
         // if (options.modules.background) {
         //     console.log(options.modules.background);    

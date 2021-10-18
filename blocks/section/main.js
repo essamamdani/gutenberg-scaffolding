@@ -46,7 +46,16 @@ blockBakeryRegisterBlock(blockSlug, {
         background: {
             name: "Background Parent",
             prefix: "bg_abc_parent"
+        },
+        typography: {
+            name: "Typography",
+            prefix: "typography"
+        },
+        backgroundOverlay: {
+            name: "Background Overlay",
+            prefix: "background_overlay"
         }
+
     },
 
     attributes: {
@@ -96,12 +105,12 @@ blockBakeryRegisterBlock(blockSlug, {
                     </PanelBody>
                 </InspectorControls>
                 <>
-                    <h1>Padding Attribute Update</h1>
+                    {/* <h1>Padding Attribute Update</h1>
                     <p>{getAttribute(attributes, 'padding', 'top')}</p>
                     <p>Top {attributes[`${attributes.mainPrefix}_padding_top`]}px</p>
                     <p>Right {attributes[`${attributes.mainPrefix}_padding_right`]}px</p>
                     <p>bottom {attributes[`${attributes.mainPrefix}_padding_bottom`]}px</p>
-                    <p>left {attributes[`${attributes.mainPrefix}_padding_left`]}px</p>
+                    <p>left {attributes[`${attributes.mainPrefix}_padding_left`]}px</p> */}
                     <RichText
                         {...blockProps}
                         tagName="h2" // The tag here is the element output and editable in the admin
@@ -109,7 +118,10 @@ blockBakeryRegisterBlock(blockSlug, {
                         allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
                         onChange={(someText) => setAttributes({ someText })} // Store updated content as a block attribute
                         placeholder={__('Heading...')} // Display this text before any content has been added by the user
-                    /></>
+                    />
+                    
+                    
+                    </>
             </>
         );
     },
