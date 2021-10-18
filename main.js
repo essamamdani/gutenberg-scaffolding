@@ -2,6 +2,7 @@ import React, { useEffects } from 'react';
 import spacingPanel from './components/spacing';
 import borderPanel from './components/border';
 import backgroundPanel from './components/background';
+import typographyPanel from './components/typography';
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n; // Import __() from wp.i18n
@@ -41,6 +42,14 @@ export const blockBakeryRegisterBlock = (blockName, options) => {
             let borderPanelObject = borderPanel({ name, defaults, prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes , options });
             attributes = borderPanelObject.attrs;
             editPanels.push(borderPanelObject.content);
+        }
+
+        if (options.modules.typography) {
+        console.log(options.modules.typography);
+        let { name, defaults, prefix } = options.modules.typography;
+        let typographyPanelObject = typographyPanel({ name, defaults ,prefix: `${MAMD_PLUGIN_INFO.prefix}_${blockName}${prefix ? `_${prefix}` : ''}`, attributes });
+        attributes = typographyPanelObject.attrs;
+        editPanels.push(typographyPanelObject.content);
         }
     }
 

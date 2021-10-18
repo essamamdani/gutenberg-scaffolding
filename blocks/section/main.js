@@ -47,7 +47,7 @@ blockBakeryRegisterBlock(blockSlug, {
         },
         {
             name: "Margin",
-            prefix: "child_margin",
+            prefix: "margin",
             defaults:{
                 top: '23px',
                 left: '10%',
@@ -82,6 +82,11 @@ blockBakeryRegisterBlock(blockSlug, {
         border_style :{
             name: "Border Style",
             prefix: "border_style",
+            defaults:'none',
+        },
+        typography: {
+            name: "Typography",
+            prefix: "typography",
             defaults:'none',
         }
     
